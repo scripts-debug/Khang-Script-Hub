@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Khang Script Hub</title>
+  <style>
+    :root {
+      --bg-color: #0b0b14;
+      --card-bg: #141324;
+      --card-border: #232238;
+      --text-main: #ffffff;
+      --text-muted: #9ca3af;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      padding: 40px 16px;
+      min-height: 100vh;
+      background-image: radial-gradient(circle at top, rgba(120, 80, 255, 0.15), transparent 60%);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+    }
+
+    .header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ffffff 0%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.4;
+      margin-bottom: 28px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 420px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+    }
+
+    .card-banner {
+      width: 100%;
+      height: 110px;
+      border-radius: 10px;
+      object-fit: cover;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      padding: 4px 8px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+    }
+
+    .tag.simulator { background: rgba(20, 184, 166, 0.2); color: #2dd4bf; }
+    .tag.mystery   { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
+
+    .card-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .card-description {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 10px 0;
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #ffffff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-teal   { background: linear-gradient(135deg, #14b8a6, #0d9488); }
+    .btn-purple { background: linear-gradient(135deg, #a855f7, #7e22ce); }
+
+    .footer {
+      margin-top: 32px;
+      font-size: 0.75rem;
+      color: #4b5563;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header class="header">
+      <h1>Khang Script Hub</h1>
+      <p>Select a game to get the script — copy with one click, paste into your executor.</p>
+    </header>
+
+    <main class="grid">
+
+      <article class="card">
+        <img class="card-banner" src="https://via.placeholder.com/300x150/0f172a/ffffff?text=Grow+A+Garden" alt="Grow A Garden 2">
+        <span class="tag simulator">Simulator</span>
+        <h2 class="card-title">🌱 Grow A Garden 2</h2>
+        <p class="card-description">Auto farm, auto collect, speed hack and many other powerful features.</p>
+        <button class="btn btn-teal" onclick="copyScript('garden')">
+          <span>⬆</span> Get Script
+        </button>
+      </article>
+
+      <article class="card">
+        <img class="card-banner" src="https://via.placeholder.com/300x150/311042/ffffff?text=Murder+Mystery" alt="Murder Mystery 2">
+        <span class="tag mystery">Mystery</span>
+        <h2 class="card-title">🔪 Murder Mystery 2</h2>
+        <p class="card-description">ESP, aimbot, godmode and useful cheats for both Murderer and Sheriff roles.</p>
+        <button class="btn btn-purple" onclick="copyScript('mm2')">
+          <span>⬆</span> Get Script
+        </button>
+      </article>
+
+    </main>
+
+    <footer class="footer">
+      Made by Khang · Paste into your executor and hit Execute
+    </footer>
+  </div>
+
+  <script>
+    // Paste your actual loadstring URLs inside these strings below:
+    const scripts = {
+      garden: `loadstring(game:HttpGet("https://raw.githubusercontent.com/scripts-debug/jay-bypass-gag2/refs/heads/main/%2520V3gag"))()`,
+      mm2: `loadstring(game:HttpGet("https://raw.githubusercontent.com/scripts-debug/Mm2--Bypass-/refs/heads/main/V3%20ScriptMm2"))()`
+    };
+
+    function copyScript(gameKey) {
+      const scriptCode = scripts[gameKey];
+      navigator.clipboard.writeText(scriptCode).then(() => {
+        alert("Script copied to clipboard! Paste it into your executor.");
+      }).catch(err => {
+        console.error("Failed to copy script: ", err);
+      });
+    }
+  </script>
+
+</body>
+</html>
