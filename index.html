@@ -105,7 +105,6 @@
       margin-bottom: 8px;
     }
 
-    .tag.simulator { background: rgba(20, 184, 166, 0.2); color: #2dd4bf; }
     .tag.mystery   { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
     .tag.tycoon    { background: rgba(244, 63, 94, 0.2);  color: #fb7185; }
 
@@ -148,7 +147,6 @@
       opacity: 0.9;
     }
 
-    .btn-teal   { background: linear-gradient(135deg, #14b8a6, #0d9488); }
     .btn-purple { background: linear-gradient(135deg, #a855f7, #7e22ce); }
     .btn-pink   { background: linear-gradient(135deg, #f43f5e, #be123c); }
 
@@ -169,17 +167,6 @@
     </header>
 
     <main class="grid">
-
-      <!-- Grow A Garden 2 (GAG2) -->
-      <article class="card">
-        <img class="card-banner" src="https://via.placeholder.com/300x150/0f172a/ffffff?text=Grow+A+Garden" alt="Grow A Garden 2">
-        <span class="tag simulator">Simulator</span>
-        <h2 class="card-title">🌱 Grow A Garden 2</h2>
-        <p class="card-description">Auto farm, auto collect, speed hack and many other powerful features.</p>
-        <button class="btn btn-teal" onclick="copyScript('gag2')">
-          <span>⬆</span> Get Script
-        </button>
-      </article>
 
       <!-- Murder Mystery 2 (MM2) -->
       <article class="card">
@@ -213,7 +200,6 @@
   <script>
     // Replace the placeholders inside the quotes below with your real loadstrings
     const scripts = {
-      gag2: `loadstring(game:HttpGet("https://raw.githubusercontent.com/scripts-debug/jay-bypass-gag2/refs/heads/main/%2520V3gag"))()`,
       mm2:  `loadstring(game:HttpGet("https://raw.githubusercontent.com/scripts-debug/Mm2--Bypass-/refs/heads/main/V3%20ScriptMm2"))()`,
       sab:  `loadstring(game:HttpGet("https://raw.githubusercontent.com/scripts-debug/jay-bypass-sab/refs/heads/main/V3Hub"))()`
     };
